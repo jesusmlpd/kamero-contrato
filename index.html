@@ -119,6 +119,36 @@ canvas.pad{width:100%;height:190px;border:1.5px dashed #c9bfd0;border-radius:12p
 .linkbox{display:flex;gap:8px;margin:10px 0}
 .linkbox input{flex:1;min-width:0;font-size:13px}
 
+
+/* guia */
+.hello h2{font-size:26px;margin:0 0 4px;letter-spacing:-.02em}
+.hello p{margin:0 0 4px;font-size:16px}
+.wiz{list-style:none;display:flex;gap:6px;padding:0;margin:16px 0 20px}
+.wiz li{flex:1;font-size:12px;text-align:center;color:var(--muted);line-height:1.25}
+.wiz li span{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;margin:0 auto 5px;background:var(--line);color:var(--ink);font-weight:700;font-size:15px}
+.wiz li.now{color:var(--ink);font-weight:600}
+.wiz li.now span{background:var(--pink);color:#fff;box-shadow:0 0 0 4px var(--pink-soft)}
+.wiz li.done span{background:var(--ok);color:#fff}
+.q{font-size:19px;margin:0 0 12px;display:flex;align-items:center;gap:10px;line-height:1.25}
+.q .num{flex:none;width:30px;height:30px;border-radius:50%;background:var(--pink);color:#fff;display:grid;place-items:center;font-size:15px}
+.deal{list-style:none;padding:0;margin:0 0 10px}
+.deal li{padding:10px 0 10px 32px;border-bottom:1px solid var(--line);position:relative;font-size:15px}
+.deal li::before{content:"✓";position:absolute;left:6px;top:10px;color:var(--pink);font-weight:800}
+.btn.big{width:100%;justify-content:center;padding:17px;font-size:18px;margin-top:6px}
+.linkbtn{display:block;width:100%;background:none;border:0;color:var(--purple);font-weight:600;padding:12px 0;cursor:pointer;text-decoration:underline;font-size:15px;text-align:center}
+.linkbtn.back{color:var(--muted);font-weight:500}
+.check.big{background:var(--pink-soft);padding:16px;border-radius:12px;font-size:17px;font-weight:700;margin:12px 0}
+.check.big input{width:24px;height:24px;margin-top:0}
+.preview-sig{border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center;background:#fcfbfd;margin-bottom:10px}
+.preview-sig svg{height:100px;width:auto;max-width:100%;margin:0 auto 6px}
+.preview-sig b{display:block;border-top:1px solid var(--ink);padding-top:6px}
+.preview-sig small{color:var(--muted)}
+.small{font-size:13px}
+.todo{margin:14px 0 16px;padding-left:22px;font-size:16px}
+.todo li{margin:6px 0}
+.notme{margin:22px 0 0;padding-top:14px;border-top:1px dashed var(--line);font-size:13px;color:var(--muted);text-align:center}
+.notme .btn{margin-top:8px}
+
 /* certificate */
 .cert table{width:100%;border-collapse:collapse;font-size:13px}
 .cert td{padding:6px 4px;border-bottom:1px solid var(--line);vertical-align:top}
@@ -151,6 +181,7 @@ footer{color:var(--muted);font-size:12px;text-align:center;padding:30px 0 50px}
   .item{break-inside:avoid}
   .sigs,.cert{break-inside:avoid}
   .kpis{display:none}
+  #docs{display:block!important}
   .hero{display:none}
 }
 </style>
@@ -168,23 +199,17 @@ footer{color:var(--muted);font-size:12px;text-align:center;padding:30px 0 50px}
 <main class="wrap">
   <div class="steps" id="steps"></div>
 
-  <section class="hero">
-    <h1>Contrato de consignación de prendas e inventario de la colaboración</h1>
-    <p>Revisa ambos documentos y firma al final. Se firma una sola vez y la firma cubre el contrato y su Anexo 1.</p>
-  </section>
+  <!-- GUIA DE FIRMA -->
+  <section class="panel" id="firmar"></section>
 
   <div id="banner"></div>
 
-  <div class="kpis">
-    <div class="kpi"><span>Reparto</span><b>70 / 30</b></div>
-    <div class="kpi"><span>Comisión tienda</span><b>30%</b></div>
-    <div class="kpi"><span>Prendas entregadas</span><b id="kPieces">0</b></div>
-    <div class="kpi"><span>Valor al público</span><b id="kValue">$0</b></div>
-  </div>
+  <div class="noprint center" style="margin:6px 0 4px"><button class="btn ghost" id="docsBtn">📄 Ver contrato completo y fotos de las prendas</button></div>
 
+  <div id="docs" hidden>
   <!-- DOCUMENTO 1 -->
   <article class="doc" id="doc1">
-    <div class="doc-h"><span class="n">1</span><div><b>Contrato de consignación mercantil de prendas de vestir</b><small>11 cláusulas · firma de ambas partes</small></div></div>
+    <div class="doc-h"><span class="n">1</span><div><b>Contrato de consignación mercantil de prendas de vestir</b><small>12 cláusulas · firma de ambas partes</small></div></div>
     <div class="doc-b" id="contract"></div>
   </article>
 
@@ -193,9 +218,8 @@ footer{color:var(--muted);font-size:12px;text-align:center;padding:30px 0 50px}
     <div class="doc-h"><span class="n">2</span><div><b>Anexo 1 · Inventario de mercancía (Colaboración Kamero Designer × Pompa Street)</b><small>Parte integral del contrato, cláusula tercera</small></div></div>
     <div class="doc-b" id="inventory"></div>
   </article>
-
-  <!-- PANEL DE FIRMA -->
-  <section class="panel" id="firmar"></section>
+  <div class="noprint center"><a class="btn pink" href="#firmar">↑ Regresar a firmar</a></div>
+  </div>
 
   <!-- CERTIFICADO -->
   <article class="doc cert" id="certDoc" hidden>
@@ -433,104 +457,139 @@ function nextSigner() { return !S.s.a ? 'a' : !S.s.b ? 'b' : null; }
 function renderSteps() {
   const n = nextSigner();
   const st = [
-    ['a', '1. Firma Uriel', 'Kamero Designer'],
-    ['b', '2. Firma Erick', 'Pompa Street'],
-    ['c', '3. Completado', 'PDF y copia para ambos'],
+    ['a', 'Firma Uriel', 'Kamero Designer'],
+    ['b', 'Firma Erick', 'Pompa Street'],
+    ['c', 'Listo', 'Copia para los dos'],
   ];
   $('steps').innerHTML = st.map(([k, b, s]) => {
     const done = k === 'c' ? !n : !!S.s[k];
-    const now = k === n || (k === 'c' && false);
-    return `<div class="step ${done ? 'done' : now ? 'now' : ''}"><b>${b}</b>${s}</div>`;
+    return `<div class="step ${done ? 'done' : k === n ? 'now' : ''}"><b>${b}</b>${s}</div>`;
   }).join('');
-  $('topCta').textContent = n ? 'Firmar' : 'Descargar PDF';
-  $('topCta').href = n ? '#firmar' : '#firmar';
+  $('topCta').textContent = n ? 'Firmar' : 'Mi copia';
 }
 
 async function renderBanner() {
   const valid = Object.values(S.s).every(s => s.h === DOC_HASH);
-  let h = '';
-  if (!valid) h = `<div class="banner warn"><b>Atención:</b> el documento cambió después de que alguien firmó. Las firmas no corresponden a esta versión. Pide un link nuevo.</div>`;
-  else if (!nextSigner()) h = `<div class="banner ok"><b>Contrato firmado por ambas partes.</b> Descarga el PDF y guarda este link: es la copia digital del contrato firmado.</div>`;
-  else if (S.s.a) h = `<div class="banner info"><b>${esc(S.s.a.n)}</b> ya firmó (${fmtDT(S.s.a.at)}). Falta la firma de <b>${esc(PARTIES.b.person)}</b> (Pompa Street).</div>`;
-  $('banner').innerHTML = h;
+  $('banner').innerHTML = valid ? '' : `<div class="banner warn"><b>Atención:</b> el contrato cambió después de que alguien firmó. Estas firmas ya no valen. Pide un link nuevo.</div>`;
 }
 
-let pad = null;
+const waLink = text => 'https://wa.me/?text=' + encodeURIComponent(text);
+const msgToErick = url => `Hola Erick 👋 Te mando el contrato de Kamero Designer para Pompa Street (30% para la tienda). Ya lo firmé. Ábrelo y sigue los 3 pasos, tardas 1 minuto: ${url}`;
+
+let pad = null, wiz = 1, agreed = false, draft = null;
+function wizBar(step) {
+  return `<ol class="wiz">${['Revisa el trato', 'Firma con tu dedo', 'Presiona Firmar'].map((t, i) =>
+    `<li class="${i + 1 < step ? 'done' : i + 1 === step ? 'now' : ''}"><span>${i + 1 < step ? '✓' : i + 1}</span>${t}</li>`).join('')}</ol>`;
+}
+
 function renderPanel() {
   const who = nextSigner(), el = $('firmar');
-  if (!who) {
-    el.innerHTML = `<h2>Listo: contrato firmado</h2>
-      <p class="lead">Ambas partes firmaron el contrato y el Anexo 1. Descarga el PDF (en el celular elige “Guardar como PDF” o “Compartir”) y comparte el link final para que cada quien tenga su copia.</p>
-      <div class="linkbox"><input class="inp" id="finalLink" readonly></div>
-      <div class="actions">
-        <button class="btn pink" id="pdfBtn">Descargar PDF</button>
-        <a class="btn wa" id="waBtn" target="_blank" rel="noopener">Enviar copia por WhatsApp</a>
-        <button class="btn ghost" id="copyBtn">Copiar link</button>
-      </div>`;
-    linkFor(S).then(url => {
-      $('finalLink').value = url;
-      $('waBtn').href = 'https://wa.me/?text=' + encodeURIComponent(`Contrato de consignación Kamero Designer × Pompa Street firmado por ambas partes. Copia digital: ${url}`);
-    });
-    $('pdfBtn').onclick = () => window.print();
-    $('copyBtn').onclick = () => copy($('finalLink').value);
-    return;
-  }
+  if (!who) return renderDone();
   const p = PARTIES[who], first = who === 'a';
-  el.innerHTML = `<h2>Firma de ${esc(p.short)} · ${p.role}</h2>
-    <p class="lead">${first ? 'Confirma los datos que faltan, firma y después envía el link a Erick para que firme.' : 'Uriel ya firmó. Revisa los documentos de arriba y firma para cerrar el contrato.'}</p>
-    ${first ? `<div class="row2">
-      <div><label class="f" for="tLiq">Liquidación de ventas (cláusula quinta)</label>
-        <select class="inp" id="tLiq">${Object.keys(LIQ_OPTS).map(k => `<option value="${k}" ${S.t.liq === k ? 'selected' : ''}>${k[0].toUpperCase() + k.slice(1)}</option>`).join('')}</select></div>
-      <div><label class="f" for="tCity">Ciudad de firma (Nuevo León)</label>
-        <input class="inp" id="tCity" value="${esc(S.t.city)}" maxlength="40"></div>
-    </div>` : ''}
-    <label class="f" for="sName">Nombre completo</label>
-    <input class="inp" id="sName" value="${esc(p.person)}" maxlength="80" autocomplete="name">
-    <label class="f">Dibuja tu firma</label>
-    <div class="pad-wrap"><canvas class="pad" id="pad"></canvas><div class="base"></div><div class="hint" id="hint">Firma aquí con tu dedo o mouse</div></div>
-    <div class="pad-tools"><span>${p.org}</span><span><button class="btn ghost sm" id="undo">Deshacer</button> <button class="btn ghost sm" id="clear">Borrar</button></span></div>
-    <label class="check"><input type="checkbox" id="agree"><span>Leí el contrato de consignación y el Anexo 1 (inventario de ${PIECES} prendas por ${money0(VALUE)}), acepto su contenido, incluida la comisión de 30% para la tienda, y acepto firmar de forma electrónica.</span></label>
-    <div class="actions"><button class="btn pink" id="signBtn" disabled>Firmar ambos documentos</button></div>`;
-  pad = makePad($('pad'));
-  const check = () => {
-    $('hint').style.display = pad.points() ? 'none' : '';
-    $('signBtn').disabled = !(pad.points() > 8 && $('agree').checked && $('sName').value.trim().length > 4);
-  };
-  pad.onChange = check; $('agree').onchange = check; $('sName').oninput = check;
-  $('undo').onclick = () => pad.undo(); $('clear').onclick = () => pad.clear();
-  if (first) {
-    const upd = async () => {
-      S.t = { liq: $('tLiq').value, city: $('tCity').value.trim() || DEFAULT_TERMS.city };
-      DOC_HASH = await sha256(canonical(S.t)); renderContract();
-    };
-    $('tLiq').onchange = upd; $('tCity').onchange = upd;
+  let hello = `<div class="hello"><h2>Hola ${esc(p.short)} 👋</h2>
+    <p>${first ? 'Te toca firmar primero. Son <b>3 pasos</b> y tardas 1 minuto.' : `<b>${esc(S.s.a.n.split(' ')[0])}</b> ya firmó. Ahora te toca a ti. Son <b>3 pasos</b> y tardas 1 minuto.`}</p></div>`;
+  let body = '';
+  if (wiz === 1) body = `
+    <h3 class="q"><span class="num">1</span> Revisa el trato</h3>
+    <ul class="deal">
+      <li><b>30%</b> de cada venta es para la tienda (Pompa Street)</li>
+      <li><b>70%</b> de cada venta es para Kamero Designer (Uriel)</li>
+      <li>Se entregan <b>${PIECES} prendas</b> que valen <b>${money0(VALUE)}</b> a precio de tienda</li>
+      <li>La tienda le paga a Uriel <b>cada mes</b>, con la lista de lo que se vendió</li>
+      <li>La tienda <b>no cambia precios ni da descuentos</b> sin permiso de Uriel</li>
+      <li>Dura <b>1 año o hasta que se venda todo</b></li>
+      <li>Lo que no se venda <b>se le regresa a Uriel</b></li>
+    </ul>
+    <button class="linkbtn" id="readBtn">📄 Quiero leer el contrato completo y ver las prendas</button>
+    <label class="check big"><input type="checkbox" id="agree" ${agreed ? 'checked' : ''}><span>Sí, estoy de acuerdo</span></label>
+    <button class="btn pink big" id="next" ${agreed ? '' : 'disabled'}>Siguiente →</button>
+    ${!first ? `<p class="notme">¿Eres Uriel? Tú ya firmaste. Solo mándale este link a Erick:<br><a class="btn wa sm" target="_blank" rel="noopener" href="${waLink(msgToErick(location.href))}">Mandar a Erick por WhatsApp</a></p>` : ''}`;
+  if (wiz === 2) body = `
+    <h3 class="q"><span class="num">2</span> Escribe tu nombre y firma con tu dedo</h3>
+    <label class="f" for="sName">Tu nombre completo</label>
+    <input class="inp" id="sName" value="${esc(draft?.n || p.person)}" maxlength="80" autocomplete="name">
+    <label class="f">Tu firma (dibújala en el cuadro)</label>
+    <div class="pad-wrap"><canvas class="pad" id="pad"></canvas><div class="base"></div><div class="hint" id="hint">✍️ Firma aquí con tu dedo</div></div>
+    <div class="pad-tools"><span>¿Te salió mal? Bórrala y repite</span><button class="btn ghost sm" id="clear">Borrar</button></div>
+    <button class="btn pink big" id="next" disabled>Siguiente →</button>
+    <button class="linkbtn back" id="back">← Atrás</button>`;
+  if (wiz === 3) body = `
+    <h3 class="q"><span class="num">3</span> Presiona Firmar y listo</h3>
+    <div class="preview-sig">${strokesToSvg(draft.st)}<b>${esc(draft.n)}</b><small>${p.role} · ${esc(p.org)}</small></div>
+    <p class="muted small">Al presionar <b>Firmar</b>, tu firma queda puesta en el contrato y en el inventario de prendas.</p>
+    <button class="btn pink big" id="signBtn">✍️ Firmar</button>
+    <button class="linkbtn back" id="back">← Atrás, quiero cambiar mi firma</button>`;
+  el.innerHTML = hello + wizBar(wiz) + body;
+
+  const go = n => { wiz = n; renderPanel(); $('firmar').scrollIntoView({ behavior: 'smooth' }); };
+  if ($('back')) $('back').onclick = () => go(wiz - 1);
+  if (wiz === 1) {
+    $('agree').onchange = () => { agreed = $('agree').checked; $('next').disabled = !agreed; };
+    $('next').onclick = () => go(2);
+    $('readBtn').onclick = () => openDocs(true);
   }
-  $('signBtn').onclick = () => sign(who);
+  if (wiz === 2) {
+    pad = makePad($('pad'));
+    const check = () => {
+      $('hint').style.display = pad.points() ? 'none' : '';
+      $('next').disabled = !(pad.points() > 8 && $('sName').value.trim().length > 4);
+    };
+    pad.onChange = check; $('sName').oninput = check;
+    $('clear').onclick = () => pad.clear();
+    $('next').onclick = () => { draft = { n: $('sName').value.trim(), st: pad.encode() }; go(3); };
+  }
+  if (wiz === 3) $('signBtn').onclick = () => sign(who);
 }
 
 async function sign(who) {
   $('signBtn').disabled = true; $('signBtn').textContent = 'Firmando…';
   DOC_HASH = await sha256(canonical(S.t));
-  S.s[who] = { n: $('sName').value.trim(), st: pad.encode(), at: new Date().toISOString(), d: device(), h: DOC_HASH };
+  S.s[who] = { n: draft.n, st: draft.st, at: new Date().toISOString(), d: device(), h: DOC_HASH };
+  wiz = 1; agreed = false; draft = null;
   const url = await linkFor(S);
   history.replaceState(null, '', url);
   notify(who, url);
   await renderAll();
-  if (who === 'a') showSendToErick(url);
-  else document.getElementById('firmar').scrollIntoView({ behavior: 'smooth' });
+  if (who === 'a') showSendToErick(url); else openDocs(false);
+  $('firmar').scrollIntoView({ behavior: 'smooth' });
 }
 
 function showSendToErick(url) {
-  const el = $('firmar');
-  el.innerHTML = `<h2>Firmaste. Ahora envíale el link a Erick</h2>
-    <p class="lead">Este link ya lleva tu firma. Cuando Erick lo abra va a ver los documentos firmados por ti y podrá firmar como EL CONSIGNATARIO.</p>
-    <div class="linkbox"><input class="inp" id="erickLink" readonly value="${esc(url)}"></div>
-    <div class="actions">
-      <a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(`Hola Erick, te comparto el contrato de consignación Kamero Designer × Pompa Street (70/30, 30% para la tienda) con el inventario de la colaboración. Ya lo firmé; revísalo y fírmalo aquí: ${url}`)}">Enviar a Erick por WhatsApp</a>
-      <button class="btn ghost" id="copyBtn">Copiar link</button>
-    </div>`;
+  $('firmar').innerHTML = `<div class="hello"><h2>¡Ya firmaste, Uriel! ✅</h2>
+    <p>Falta un paso: mándale el contrato a Erick para que firme él.</p></div>
+    <ol class="todo">
+      <li>Presiona el botón verde de abajo</li>
+      <li>En WhatsApp, elige a <b>Erick</b></li>
+      <li>Presiona <b>Enviar</b>. ¡Eso es todo!</li>
+    </ol>
+    <a class="btn wa big" target="_blank" rel="noopener" href="${waLink(msgToErick(url))}">Mandar a Erick por WhatsApp</a>
+    <button class="linkbtn" id="copyBtn">o copiar el link</button>`;
   $('copyBtn').onclick = () => copy(url);
-  el.scrollIntoView({ behavior: 'smooth' });
+}
+
+function renderDone() {
+  const el = $('firmar');
+  el.innerHTML = `<div class="hello"><h2>¡Listo! Ya firmaron los dos ✅</h2>
+    <p>El contrato quedó cerrado. Ahora cada quien guarda su copia:</p></div>
+    <ol class="todo">
+      <li>Presiona <b>Guardar PDF</b> y guárdalo en tu celular</li>
+      <li>Manda la copia por WhatsApp a la otra persona</li>
+    </ol>
+    <button class="btn pink big" id="pdfBtn">📄 Guardar PDF</button>
+    <a class="btn wa big" id="waBtn" target="_blank" rel="noopener" style="margin-top:10px">Mandar copia por WhatsApp</a>
+    <button class="linkbtn" id="copyBtn">o copiar el link</button>
+    <p class="muted small">En el celular: al presionar Guardar PDF, toca “Compartir” o “Guardar como PDF”.</p>`;
+  linkFor(S).then(url => {
+    $('waBtn').href = waLink(`Contrato Kamero Designer × Pompa Street firmado por los dos ✅ Aquí está la copia: ${url}`);
+    $('copyBtn').onclick = () => copy(url);
+  });
+  $('pdfBtn').onclick = () => window.print();
+}
+
+function openDocs(scroll) {
+  $('docs').hidden = false;
+  $('docsBtn').textContent = '📄 Esconder contrato';
+  if (scroll) $('docs').scrollIntoView({ behavior: 'smooth' });
 }
 
 async function copy(text) {
@@ -575,13 +634,14 @@ async function renderAll() {
 }
 
 async function load() {
-  $('kPieces').textContent = PIECES; $('kValue').textContent = money0(VALUE);
+  $('docsBtn').onclick = () => $('docs').hidden ? openDocs(true) : ($('docs').hidden = true, $('docsBtn').textContent = '📄 Ver contrato completo y fotos de las prendas');
   const m = location.hash.match(/#d=([A-Za-z0-9_-]+)/);
   if (m) {
     try { const st = await unpack(m[1]); if (st && st.v === 1) S = { v: 1, t: { ...DEFAULT_TERMS, ...st.t }, s: st.s || {} }; }
     catch { $('banner').innerHTML = '<div class="banner warn">El link está incompleto o dañado. Pide que te lo vuelvan a enviar.</div>'; }
   }
   await renderAll();
+  if (!nextSigner()) openDocs(false);
 }
 window.addEventListener('hashchange', () => location.reload());
 load();

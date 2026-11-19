@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Firma de contrato · Kamero Designer × Pompa Street</title>
+<meta name="description" content="Contrato de consignación de prendas e inventario de colaboración. Firma digital.">
+<meta property="og:title" content="Kamero Designer × Pompa Street · Contrato para firmar">
+<meta property="og:description" content="Contrato de consignación 70/30 e inventario de la colaboración. Revisa y firma desde tu celular.">
+<meta property="og:image" content="https://jesusmlpd.github.io/kamero-contrato/img/logo.jpg">
+<link rel="icon" href="img/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f2f5;--paper:#fff;--ink:#17141a;--muted:#6b6470;--line:#e4dfe7;
+  --pink:#e8418f;--pink-soft:#fde7f1;--purple:#6b3fa0;--ok:#138a52;--ok-soft:#e3f5ec;--warn:#b25b00;--warn-soft:#fff2df;
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,-apple-system,sans-serif;-webkit-text-size-adjust:100%}
+img{max-width:100%;display:block}
+button,input,select{font:inherit}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:12px;height:60px}
+.top img{width:34px;height:34px;border-radius:50%;object-fit:cover}
+.top b{font-size:15px}
+.top small{display:block;color:var(--muted);font-size:12px;line-height:1.2}
+.top .cta{margin-left:auto}
+
+.btn{appearance:none;border:0;border-radius:999px;padding:11px 20px;font-weight:600;cursor:pointer;background:var(--ink);color:#fff;display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:15px}
+.btn.pink{background:var(--pink)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.wa{background:#1fa855}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.sm{padding:8px 14px;font-size:14px}
+
+/* steps */
+.steps{display:flex;gap:6px;margin:22px 0 8px}
+.step{flex:1;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:13px;color:var(--muted)}
+.step b{display:block;color:var(--ink);font-size:14px}
+.step.done{border-color:var(--ok);background:var(--ok-soft)}
+.step.done b::before{content:"✓ ";color:var(--ok)}
+.step.now{border-color:var(--pink);background:var(--pink-soft)}
+
+.hero{margin:18px 0 14px}
+.hero h1{font-size:28px;line-height:1.15;margin:0 0 6px;letter-spacing:-.02em}
+.hero p{margin:0;color:var(--muted)}
+
+.banner{border-radius:var(--radius);padding:14px 16px;margin:14px 0;font-size:15px}
+.banner.warn{background:var(--warn-soft);color:var(--warn)}
+.banner.ok{background:var(--ok-soft);color:var(--ok)}
+.banner.info{background:var(--pink-soft);color:#8a1d52}
+
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+.kpi{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px}
+.kpi span{display:block;font-size:12px;color:var(--muted)}
+.kpi b{font-size:19px;letter-spacing:-.01em}
+
+/* documents */
+.doc{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);margin:18px 0;overflow:hidden}
+.doc-h{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line);background:#faf9fb}
+.doc-h .n{width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;font-size:13px;font-weight:700;display:grid;place-items:center;flex:none}
+.doc-h b{font-size:15px}
+.doc-h small{color:var(--muted);display:block;font-size:12px}
+.doc-b{padding:22px 22px 26px}
+.doc-b h2{font-size:20px;text-align:center;margin:0 0 4px;letter-spacing:-.01em}
+.doc-b h3{font-size:14px;letter-spacing:.04em;text-transform:uppercase;margin:22px 0 6px}
+.doc-b p{margin:0 0 10px}
+.doc-b ul{margin:0 0 10px;padding-left:20px}
+.fill{background:var(--pink-soft);color:#8a1d52;border-radius:4px;padding:0 4px;font-weight:600;white-space:nowrap}
+.center{text-align:center}
+.muted{color:var(--muted)}
+
+/* inventory */
+.inv{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px}
+.item{border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;gap:12px}
+.item .ph{display:flex;gap:4px;flex:none;width:112px;height:112px;background:#f7f5f8;border-radius:10px;padding:4px;align-items:center;justify-content:center}
+.item .ph img{max-height:100%;object-fit:contain;min-width:0;flex:1}
+.item h4{margin:0;font-size:14px;line-height:1.3}
+.item .pr{font-weight:700;margin:2px 0 6px;font-size:14px}
+.sizes{display:flex;flex-wrap:wrap;gap:4px}
+.sizes span{font-size:12px;border:1px solid var(--line);border-radius:6px;padding:1px 6px}
+.sizes span b{font-weight:700}
+.item .tt{font-size:12px;color:var(--muted);margin-top:6px}
+table.sum{width:100%;border-collapse:collapse;margin-top:18px;font-size:14px}
+table.sum th,table.sum td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:left}
+table.sum td.r,table.sum th.r{text-align:right;font-variant-numeric:tabular-nums}
+table.sum tfoot td{font-weight:700;border-bottom:0;border-top:2px solid var(--ink)}
+
+/* signatures on document */
+.sigs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}
+.sigbox{font-size:13px}
+.sigbox .svg{height:90px;display:flex;align-items:flex-end;justify-content:center;border-bottom:1px solid var(--ink);margin-bottom:6px;padding-bottom:2px}
+.sigbox .svg svg{height:84px;width:auto;max-width:100%}
+.sigbox .svg .pending{color:var(--muted);font-size:13px;align-self:center}
+.sigbox b{display:block;font-size:14px}
+.sigbox small{color:var(--muted);display:block}
+
+/* signing panel */
+.panel{background:var(--paper);border:2px solid var(--pink);border-radius:var(--radius);padding:20px;margin:22px 0}
+.panel h2{margin:0 0 4px;font-size:20px}
+.panel p.lead{margin:0 0 14px;color:var(--muted)}
+label.f{display:block;font-size:13px;font-weight:600;margin:12px 0 4px}
+.inp{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px 12px;background:#fff;color:var(--ink);font-size:16px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pad-wrap{position:relative;margin-top:6px}
+canvas.pad{width:100%;height:190px;border:1.5px dashed #c9bfd0;border-radius:12px;background:#fcfbfd;touch-action:none;display:block;cursor:crosshair}
+.pad-wrap .hint{position:absolute;left:0;right:0;bottom:46px;text-align:center;color:#b8afbf;pointer-events:none;font-size:14px}
+.pad-wrap .base{position:absolute;left:24px;right:24px;bottom:38px;border-bottom:1px solid #ddd5e2;pointer-events:none}
+.pad-tools{display:flex;justify-content:space-between;align-items:center;margin-top:6px;font-size:13px;color:var(--muted)}
+.check{display:flex;gap:10px;align-items:flex-start;margin:16px 0;font-size:14px;cursor:pointer}
+.check input{width:20px;height:20px;margin-top:1px;accent-color:var(--pink);flex:none}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.linkbox{display:flex;gap:8px;margin:10px 0}
+.linkbox input{flex:1;min-width:0;font-size:13px}
+
+/* certificate */
+.cert table{width:100%;border-collapse:collapse;font-size:13px}
+.cert td{padding:6px 4px;border-bottom:1px solid var(--line);vertical-align:top}
+.cert td:first-child{color:var(--muted);width:38%}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;word-break:break-all}
+
+footer{color:var(--muted);font-size:12px;text-align:center;padding:30px 0 50px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:10px 16px;border-radius:999px;font-size:14px;opacity:0;transition:.25s;pointer-events:none;z-index:50}
+.toast.on{opacity:1;transform:translateX(-50%)}
+
+@media (max-width:640px){
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .inv{grid-template-columns:1fr}
+  .row2{grid-template-columns:1fr}
+  .doc-b{padding:18px 16px 22px}
+  .hero h1{font-size:23px}
+  .step{padding:8px 9px;font-size:12px}
+  .step b{font-size:13px}
+  .top .cta{display:none}
+}
+@media print{
+  @page{margin:14mm}
+  body{background:#fff;font-size:11.5pt}
+  .top,.steps,.panel,.banner,.noprint,footer,.toast{display:none!important}
+  .doc{border:0;margin:0;border-radius:0}
+  .doc+.doc{break-before:page}
+  .doc-h{display:none}
+  .doc-b{padding:0}
+  .fill{background:none;color:inherit;padding:0}
+  .item{break-inside:avoid}
+  .sigs,.cert{break-inside:avoid}
+  .kpis{display:none}
+  .hero{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <img src="img/logo.jpg" alt="">
+    <div><b>Kamero Designer × Pompa Street</b><small>Sobre de firma digital · 2 documentos</small></div>
+    <a class="btn sm pink cta" href="#firmar" id="topCta">Firmar</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="steps" id="steps"></div>
+
+  <section class="hero">
+    <h1>Contrato de consignación de prendas e inventario de la colaboración</h1>
+    <p>Revisa ambos documentos y firma al final. Se firma una sola vez y la firma cubre el contrato y su Anexo 1.</p>
+  </section>
+
+  <div id="banner"></div>
+
+  <div class="kpis">
+    <div class="kpi"><span>Reparto</span><b>70 / 30</b></div>
+    <div class="kpi"><span>Comisión tienda</span><b>30%</b></div>
+    <div class="kpi"><span>Prendas entregadas</span><b id="kPieces">0</b></div>
+    <div class="kpi"><span>Valor al público</span><b id="kValue">$0</b></div>
+  </div>
+
+  <!-- DOCUMENTO 1 -->
+  <article class="doc" id="doc1">
+    <div class="doc-h"><span class="n">1</span><div><b>Contrato de consignación mercantil de prendas de vestir</b><small>11 cláusulas · firma de ambas partes</small></div></div>
+    <div class="doc-b" id="contract"></div>
+  </article>
+
+  <!-- DOCUMENTO 2 -->
+  <article class="doc" id="doc2">
+    <div class="doc-h"><span class="n">2</span><div><b>Anexo 1 · Inventario de mercancía (Colaboración Kamero Designer × Pompa Street)</b><small>Parte integral del contrato, cláusula tercera</small></div></div>
+    <div class="doc-b" id="inventory"></div>
+  </article>
+
+  <!-- PANEL DE FIRMA -->
+  <section class="panel" id="firmar"></section>
+
+  <!-- CERTIFICADO -->
+  <article class="doc cert" id="certDoc" hidden>
+    <div class="doc-h"><span class="n">✓</span><div><b>Certificado de firma electrónica</b><small>Registro de quién firmó, cuándo y sobre qué versión del documento</small></div></div>
+    <div class="doc-b" id="cert"></div>
+  </article>
+
+  <footer>
+    La firma se guarda dentro del link de este sobre (no en un servidor). Guarda el link final o el PDF como respaldo.
+  </footer>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============ DATOS ============ */
+const PARTIES = {
+  a: { role: 'EL CONSIGNANTE', person: 'Uriel Gerardo Camero Méndez', org: 'Kamero Designer', short: 'Uriel' },
+  b: { role: 'EL CONSIGNATARIO', person: 'Erick Pompa', org: 'Pompa Street', short: 'Erick' },
+};
+const COMMISSION = 30; // % para la tienda
+const NOTIFY = 'https://formsubmit.co/ajax/315af0f28bc392cb40c46c5748ab2866';
+
+const INVENTORY = [
+  { name: 'Conjunto Pana', price: 4098, sizes: { XS: 2, S: 5, M: 1, L: 4, XL: 2 }, img: ['pana-1.jpg', 'pana-2.jpg'] },
+  { name: 'Conjunto Serpiente Fuego', price: 3198, sizes: { L: 2 }, img: ['serpiente-1.jpg', 'serpiente-2.jpg'] },
+  { name: 'Conjunto Suede Verde', price: 4098, sizes: { XL: 1 }, img: ['suede-verde.jpg'] },
+  { name: 'Conjunto Suede Azul', price: 4098, sizes: { M: 1 }, img: ['suede-azul.jpg'] },
+  { name: 'Conjunto Suede Rosa', price: 4098, sizes: { S: 2, M: 3, L: 3, XL: 2 }, img: ['suede-rosa.jpg'] },
+  { name: 'Conjunto Flores (Anacahuita)', price: 3498, sizes: { M: 1, XL: 1, '2XL': 1 }, img: ['flores.jpg'] },
+  { name: 'Conjunto Verde (Ornamenta Jade)', price: 3498, sizes: { '2XL': 2 }, img: ['jade.jpg'] },
+  { name: 'Conjunto Negro (Sad Noir)', price: 3498, sizes: { '2XL': 1 }, img: ['noir-1.jpg', 'noir-2.jpg'] },
+  { name: 'Conjunto Flamas', price: 3498, sizes: { M: 2, XL: 1, '2XL': 2 }, img: ['flamas-1.jpg', 'flamas-2.jpg'] },
+  { name: 'Work Pants Jacquard', price: 1699, sizes: { 'XS (28)': 2, 'M (32)': 1, 'L (34)': 1 }, img: ['workpants.jpg'] },
+  { name: 'Playera #1', price: 1499, sizes: { XS: 2, L: 2, XL: 2, '2XL': 2, '3XL': 1 }, img: ['playera.png'] },
+];
+const qty = it => Object.values(it.sizes).reduce((a, b) => a + b, 0);
+const PIECES = INVENTORY.reduce((a, it) => a + qty(it), 0);
+const VALUE = INVENTORY.reduce((a, it) => a + qty(it) * it.price, 0);
+const money = n => '$' + n.toLocaleString('es-MX', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const money0 = n => '$' + n.toLocaleString('es-MX');
+
+const DEFAULT_TERMS = { liq: 'mensual', vig: 90, city: 'Monterrey' };
+const LIQ_OPTS = { semanal: 'semana', quincenal: 'quince (15) días', mensual: 'mes, dentro de los primeros cinco días hábiles del mes siguiente' };
+const MONTHS = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+
+/* ============ ESTADO (vive en el link) ============ */
+let S = { v: 1, t: { ...DEFAULT_TERMS }, s: {} };
+let DOC_HASH = '';
+
+const b64e = u8 => { let s = ''; for (const b of u8) s += String.fromCharCode(b); return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); };
+const b64d = str => { str = str.replace(/-/g, '+').replace(/_/g, '/'); while (str.length % 4) str += '='; return Uint8Array.from(atob(str), c => c.charCodeAt(0)); };
+async function pack(obj) {
+  const bytes = new TextEncoder().encode(JSON.stringify(obj));
+  if (window.CompressionStream) {
+    const out = await new Response(new Blob([bytes]).stream().pipeThrough(new CompressionStream('deflate-raw'))).arrayBuffer();
+    return 'z' + b64e(new Uint8Array(out));
+  }
+  return 'j' + b64e(bytes);
+}
+async function unpack(str) {
+  const kind = str[0], bytes = b64d(str.slice(1));
+  if (kind === 'z') {
+    const out = await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).arrayBuffer();
+    return JSON.parse(new TextDecoder().decode(out));
+  }
+  return JSON.parse(new TextDecoder().decode(bytes));
+}
+async function linkFor(state) { return location.origin + location.pathname + '#d=' + await pack(state); }
+async function sha256(text) {
+  const h = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return [...new Uint8Array(h)].map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+/* ============ CONTRATO ============ */
+function clauses(t) {
+  return [
+    ['DECLARACIONES', null],
+    ['I. Declara EL CONSIGNANTE:', { ul: [
+      'Que es propietario legítimo de las prendas de vestir objeto de este contrato.',
+      'Que cuenta con la capacidad legal para celebrar el presente acuerdo.',
+      'Que tiene interés en entregar determinadas prendas para su exhibición y comercialización bajo el régimen de consignación mercantil.',
+    ] }],
+    ['II. Declara EL CONSIGNATARIO:', { ul: [
+      'Que cuenta con un establecimiento comercial destinado a la venta de prendas de vestir.',
+      'Que tiene interés en recibir las prendas para su exhibición y venta.',
+      'Que acepta las condiciones establecidas en este contrato.',
+    ] }],
+    ['CLÁUSULAS', null],
+    ['PRIMERA. Objeto del contrato.', 'EL CONSIGNANTE entrega a EL CONSIGNATARIO, bajo la modalidad de consignación mercantil, diversas prendas de vestir, consistentes principalmente en conjuntos para caballero, integrados principalmente por camisa y short, para su exhibición y comercialización en el establecimiento señalado.'],
+    ['SEGUNDA. Propiedad de las prendas.', 'Las prendas entregadas continuarán siendo propiedad de EL CONSIGNANTE hasta el momento de su venta al consumidor final. La entrega en consignación no implica transmisión de propiedad a favor de EL CONSIGNATARIO.'],
+    ['TERCERA. Inventario.', 'Las partes deberán firmar un inventario que formará parte integral del presente contrato, especificando cantidad, modelo, talla, color, descripción y precio de cada conjunto entregado. Dicho inventario se agrega como Anexo 1 y se firma junto con este contrato.'],
+    ['CUARTA. Precio de venta y comisión.', `Las partes acuerdan que el precio de venta al público será previamente establecido por EL CONSIGNANTE. EL CONSIGNATARIO recibirá como contraprestación una comisión equivalente al {{${COMMISSION}% (treinta por ciento)}} sobre el precio de venta de cada prenda efectivamente comercializada. El importe restante, equivalente al {{${100 - COMMISSION}% (setenta por ciento)}}, corresponderá a EL CONSIGNANTE.`],
+    ['QUINTA. Liquidación de ventas.', `EL CONSIGNATARIO se obliga a entregar a EL CONSIGNANTE el importe correspondiente a las prendas vendidas, descontando únicamente la comisión pactada. La liquidación se realizará cada {{${LIQ_OPTS[t.liq]}}}, acompañada de una relación detallada de las prendas vendidas.`],
+    ['SEXTA. Cuidado y responsabilidad de la mercancía.', 'EL CONSIGNATARIO se obliga a conservar las prendas en buen estado, evitando su deterioro, alteración o uso indebido. Asimismo, deberá responder conforme a la ley y a lo aquí pactado por la pérdida o daño de las prendas durante el periodo en que se encuentren bajo su posesión, considerando las excepciones legales aplicables.'],
+    ['SÉPTIMA. Prohibición de descuentos.', 'EL CONSIGNATARIO no podrá modificar los precios establecidos, ofrecer descuentos, promociones o entregar mercancía a terceros fuera de las condiciones autorizadas por EL CONSIGNANTE, sin autorización previa.'],
+    ['OCTAVA. Devolución de mercancía.', 'Las prendas que no hayan sido vendidas deberán ser devueltas a EL CONSIGNANTE al terminar el plazo establecido, en las mismas condiciones en que fueron recibidas, salvo el desgaste ordinario derivado de la exhibición autorizada.'],
+    ['NOVENA. Vigencia.', `El presente contrato tendrá una vigencia de {{${t.vig} días}}, contados a partir de su firma, pudiendo renovarse previo acuerdo de ambas partes.`],
+    ['DÉCIMA. Terminación anticipada.', 'Cualquiera de las partes podrá solicitar la terminación anticipada del contrato mediante aviso por escrito a la otra parte, debiendo realizarse la liquidación de las ventas pendientes y la devolución de las prendas no vendidas.'],
+    ['DÉCIMA PRIMERA. Jurisdicción.', 'Para la interpretación y cumplimiento del presente contrato, las partes se someten a las disposiciones aplicables del Código de Comercio y a los tribunales competentes que correspondan conforme a derecho.'],
+    ['DÉCIMA SEGUNDA. Firma electrónica.', 'Las partes acuerdan celebrar el presente contrato y su Anexo 1 por medios electrónicos, reconociendo su firma electrónica como manifestación expresa de su voluntad, con la misma validez que su firma autógrafa, en términos de los artículos 89 y siguientes del Código de Comercio. Cada parte conserva una copia digital idéntica del documento firmado.'],
+  ];
+}
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const fills = s => esc(s).replace(/\{\{(.+?)\}\}/g, '<span class="fill">$1</span>');
+const plain = s => s.replace(/\{\{(.+?)\}\}/g, '$1');
+
+function canonical(t) {
+  const c = clauses(t).map(([h, b]) => h + '\n' + (b == null ? '' : typeof b === 'string' ? plain(b) : b.ul.join('\n'))).join('\n\n');
+  const inv = INVENTORY.map(it => `${it.name}|${it.price}|${Object.entries(it.sizes).map(([k, v]) => k + ':' + v).join(',')}`).join('\n');
+  return [ 'v1', PARTIES.a.person, PARTIES.a.org, PARTIES.b.person, PARTIES.b.org, t.city, c, inv, PIECES, VALUE ].join('\n---\n');
+}
+
+function signedDate() {
+  const last = S.s.b?.at || S.s.a?.at;
+  if (!last || !S.s.b) return null;
+  const d = new Date(last);
+  const parts = new Intl.DateTimeFormat('es-MX', { timeZone: 'America/Monterrey', day: 'numeric', month: 'numeric', year: 'numeric' }).formatToParts(d);
+  const get = k => +parts.find(p => p.type === k).value;
+  return { day: get('day'), month: MONTHS[get('month') - 1], year: get('year') };
+}
+
+function sigBlock(key) {
+  const p = PARTIES[key], s = S.s[key];
+  return `<div class="sigbox">
+    <div class="svg">${s ? strokesToSvg(s.st) : '<span class="pending">Pendiente de firma</span>'}</div>
+    <small>${p.role}</small>
+    <b>${esc(s ? s.n : p.person)}</b>
+    <small>${esc(p.org)}${s ? ' · ' + fmtDT(s.at) : ''}</small>
+  </div>`;
+}
+
+function renderContract() {
+  const t = S.t, d = signedDate();
+  let h = `<h2>Contrato de consignación mercantil de prendas de vestir</h2>
+    <p class="center muted" style="margin-bottom:18px">Kamero Designer × Pompa Street</p>
+    <p>CONTRATO DE CONSIGNACIÓN MERCANTIL que celebran, por una parte, <b>${esc(S.s.a?.n || PARTIES.a.person)}</b>, titular de la marca <b>Kamero Designer</b>, a quien en lo sucesivo se le denominará <b>EL CONSIGNANTE</b>; y por otra parte, <b>${esc(S.s.b?.n || PARTIES.b.person)}</b>, propietario(a) o representante de la tienda denominada <b>Pompa Street</b>, a quien se le denominará <b>EL CONSIGNATARIO</b>, sujetándose ambas partes a las siguientes declaraciones y cláusulas:</p>`;
+  for (const [title, body] of clauses(t)) {
+    if (body == null) { h += `<h3 class="center" style="margin-top:26px">${title}</h3>`; continue; }
+    h += `<h3>${title}</h3>`;
+    h += typeof body === 'string' ? `<p>${fills(body)}</p>` : `<ul>${body.ul.map(li => `<li>${esc(li)}</li>`).join('')}</ul>`;
+  }
+  h += `<p style="margin-top:22px">Leído que fue el presente contrato y enteradas las partes de su contenido y alcance legal, lo firman electrónicamente en <span class="fill">${esc(t.city)}</span>, Nuevo León, ${d ? `a los <span class="fill">${d.day}</span> días del mes de <span class="fill">${d.month}</span> de <span class="fill">${d.year}</span>` : 'en la fecha de la última firma que consta en el certificado anexo'}.</p>`;
+  h += `<div class="sigs">${sigBlock('a')}${sigBlock('b')}</div>`;
+  document.getElementById('contract').innerHTML = h;
+}
+
+function renderInventory() {
+  let h = `<h2>Anexo 1. Inventario de mercancía</h2><p class="center muted">Colaboración Kamero Designer × Pompa Street · precios al público</p><div class="inv">`;
+  for (const it of INVENTORY) {
+    h += `<div class="item"><div class="ph">${it.img.map(src => `<img src="img/${src}" alt="${esc(it.name)}" loading="lazy">`).join('')}</div>
+      <div><h4>${esc(it.name)}</h4><div class="pr">${money(it.price)}</div>
+      <div class="sizes">${Object.entries(it.sizes).map(([k, v]) => `<span>${esc(k)} · <b>${v}</b></span>`).join('')}</div>
+      <div class="tt">${qty(it)} pzas · ${money(qty(it) * it.price)}</div></div></div>`;
+  }
+  h += `</div><table class="sum"><thead><tr><th>Modelo</th><th class="r">Pzas</th><th class="r">Precio</th><th class="r">Subtotal</th></tr></thead><tbody>`;
+  for (const it of INVENTORY) h += `<tr><td>${esc(it.name)}</td><td class="r">${qty(it)}</td><td class="r">${money(it.price)}</td><td class="r">${money(qty(it) * it.price)}</td></tr>`;
+  const store = VALUE * COMMISSION / 100;
+  h += `</tbody><tfoot><tr><td>Total de prendas entregadas</td><td class="r">${PIECES}</td><td></td><td class="r">${money(VALUE)}</td></tr></tfoot></table>
+    <p style="margin-top:14px">Valor total de la mercancía a precio al público: <b>${money(VALUE)}</b>. Si se vende la totalidad, corresponderían <b>${money(store)}</b> (30%) a EL CONSIGNATARIO y <b>${money(VALUE - store)}</b> (70%) a EL CONSIGNANTE.</p>
+    <p>Las partes reconocen haber recibido y entregado de conformidad la mercancía descrita en este inventario.</p>
+    <div class="sigs">${sigBlock('a')}${sigBlock('b')}</div>`;
+  document.getElementById('inventory').innerHTML = h;
+}
+
+/* ============ FIRMA (trazos) ============ */
+function strokesToSvg(st) {
+  if (!st || !st.length) return '';
+  let minX = 1e9, minY = 1e9, maxX = -1e9, maxY = -1e9;
+  const paths = st.map(flat => {
+    const pts = []; let x = 0, y = 0;
+    for (let i = 0; i < flat.length; i += 2) { x += flat[i]; y += flat[i + 1]; pts.push([x, y]); minX = Math.min(minX, x); minY = Math.min(minY, y); maxX = Math.max(maxX, x); maxY = Math.max(maxY, y); }
+    return pts;
+  });
+  const pad = 6;
+  const d = paths.map(pts => {
+    if (pts.length === 1) return `M${pts[0][0]} ${pts[0][1]}l0.1 0`;
+    let s = `M${pts[0][0]} ${pts[0][1]}`;
+    for (let i = 1; i < pts.length - 1; i++) { const mx = (pts[i][0] + pts[i + 1][0]) / 2, my = (pts[i][1] + pts[i + 1][1]) / 2; s += `Q${pts[i][0]} ${pts[i][1]} ${mx} ${my}`; }
+    const l = pts[pts.length - 1]; return s + `L${l[0]} ${l[1]}`;
+  }).join('');
+  return `<svg preserveAspectRatio="xMidYMax meet" viewBox="${minX - pad} ${minY - pad} ${maxX - minX + pad * 2} ${maxY - minY + pad * 2}" xmlns="http://www.w3.org/2000/svg"><path d="${d}" fill="none" stroke="#1b1840" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+}
+
+function makePad(canvas) {
+  const W = 600, H = 190; let strokes = [], cur = null, onChange = () => {};
+  const ctx = canvas.getContext('2d');
+  function size() {
+    const r = canvas.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+    canvas.width = r.width * dpr; canvas.height = r.height * dpr; redraw();
+  }
+  function toLocal(e) { const r = canvas.getBoundingClientRect(); return [Math.round((e.clientX - r.left) / r.width * W), Math.round((e.clientY - r.top) / r.height * H)]; }
+  function redraw() {
+    const sx = canvas.width / W, sy = canvas.height / H;
+    ctx.setTransform(sx, 0, 0, sy, 0, 0); ctx.clearRect(0, 0, W, H);
+    ctx.strokeStyle = '#1b1840'; ctx.lineWidth = 3; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    for (const s of strokes.concat(cur ? [cur] : [])) {
+      ctx.beginPath(); ctx.moveTo(s[0][0], s[0][1]);
+      if (s.length === 1) ctx.lineTo(s[0][0] + .1, s[0][1]);
+      for (let i = 1; i < s.length; i++) ctx.lineTo(s[i][0], s[i][1]);
+      ctx.stroke();
+    }
+  }
+  canvas.addEventListener('pointerdown', e => { e.preventDefault(); canvas.setPointerCapture(e.pointerId); cur = [toLocal(e)]; redraw(); });
+  canvas.addEventListener('pointermove', e => {
+    if (!cur) return; const p = toLocal(e), l = cur[cur.length - 1];
+    if (Math.hypot(p[0] - l[0], p[1] - l[1]) >= 2) { cur.push(p); redraw(); }
+  });
+  const end = () => { if (cur) { strokes.push(cur); cur = null; redraw(); onChange(); } };
+  canvas.addEventListener('pointerup', end); canvas.addEventListener('pointercancel', end); canvas.addEventListener('pointerleave', end);
+  window.addEventListener('resize', size); size();
+  return {
+    clear() { strokes = []; redraw(); onChange(); },
+    undo() { strokes.pop(); redraw(); onChange(); },
+    points() { return strokes.reduce((a, s) => a + s.length, 0); },
+    encode() { // delta-encoded, flattened
+      return strokes.map(s => { const out = []; let px = 0, py = 0; for (const [x, y] of s) { out.push(x - px, y - py); px = x; py = y; } return out; });
+    },
+    set onChange(fn) { onChange = fn; },
+  };
+}
+
+/* ============ UI ============ */
+const $ = id => document.getElementById(id);
+function toast(msg) { const t = $('toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('on'), 2200); }
+function fmtDT(iso) { return new Intl.DateTimeFormat('es-MX', { timeZone: 'America/Monterrey', dateStyle: 'medium', timeStyle: 'short' }).format(new Date(iso)); }
+function device() {
+  const u = navigator.userAgent;
+  const os = /iPhone/.test(u) ? 'iPhone' : /iPad/.test(u) ? 'iPad' : /Android/.test(u) ? 'Android' : /Mac/.test(u) ? 'Mac' : /Windows/.test(u) ? 'Windows' : 'Otro';
+  const br = /CriOS|Chrome/.test(u) && !/Edg/.test(u) ? 'Chrome' : /Edg/.test(u) ? 'Edge' : /Firefox|FxiOS/.test(u) ? 'Firefox' : /Safari/.test(u) ? 'Safari' : 'Navegador';
+  return os + ' · ' + br;
+}
+function nextSigner() { return !S.s.a ? 'a' : !S.s.b ? 'b' : null; }
+
+function renderSteps() {
+  const n = nextSigner();
+  const st = [
+    ['a', '1. Firma Uriel', 'Kamero Designer'],
+    ['b', '2. Firma Erick', 'Pompa Street'],
+    ['c', '3. Completado', 'PDF y copia para ambos'],
+  ];
+  $('steps').innerHTML = st.map(([k, b, s]) => {
+    const done = k === 'c' ? !n : !!S.s[k];
+    const now = k === n || (k === 'c' && false);
+    return `<div class="step ${done ? 'done' : now ? 'now' : ''}"><b>${b}</b>${s}</div>`;
+  }).join('');
+  $('topCta').textContent = n ? 'Firmar' : 'Descargar PDF';
+  $('topCta').href = n ? '#firmar' : '#firmar';
+}
+
+async function renderBanner() {
+  const valid = Object.values(S.s).every(s => s.h === DOC_HASH);
+  let h = '';
+  if (!valid) h = `<div class="banner warn"><b>Atención:</b> el documento cambió después de que alguien firmó. Las firmas no corresponden a esta versión. Pide un link nuevo.</div>`;
+  else if (!nextSigner()) h = `<div class="banner ok"><b>Contrato firmado por ambas partes.</b> Descarga el PDF y guarda este link: es la copia digital del contrato firmado.</div>`;
+  else if (S.s.a) h = `<div class="banner info"><b>${esc(S.s.a.n)}</b> ya firmó (${fmtDT(S.s.a.at)}). Falta la firma de <b>${esc(PARTIES.b.person)}</b> (Pompa Street).</div>`;
+  $('banner').innerHTML = h;
+}
+
+let pad = null;
+function renderPanel() {
+  const who = nextSigner(), el = $('firmar');
+  if (!who) {
+    el.innerHTML = `<h2>Listo: contrato firmado</h2>
+      <p class="lead">Ambas partes firmaron el contrato y el Anexo 1. Descarga el PDF (en el celular elige “Guardar como PDF” o “Compartir”) y comparte el link final para que cada quien tenga su copia.</p>
+      <div class="linkbox"><input class="inp" id="finalLink" readonly></div>
+      <div class="actions">
+        <button class="btn pink" id="pdfBtn">Descargar PDF</button>
+        <a class="btn wa" id="waBtn" target="_blank" rel="noopener">Enviar copia por WhatsApp</a>
+        <button class="btn ghost" id="copyBtn">Copiar link</button>
+      </div>`;
+    linkFor(S).then(url => {
+      $('finalLink').value = url;
+      $('waBtn').href = 'https://wa.me/?text=' + encodeURIComponent(`Contrato de consignación Kamero Designer × Pompa Street firmado por ambas partes. Copia digital: ${url}`);
+    });
+    $('pdfBtn').onclick = () => window.print();
+    $('copyBtn').onclick = () => copy($('finalLink').value);
+    return;
+  }
+  const p = PARTIES[who], first = who === 'a';
+  el.innerHTML = `<h2>Firma de ${esc(p.short)} · ${p.role}</h2>
+    <p class="lead">${first ? 'Confirma los datos que faltan, firma y después envía el link a Erick para que firme.' : 'Uriel ya firmó. Revisa los documentos de arriba y firma para cerrar el contrato.'}</p>
+    ${first ? `<div class="row2">
+      <div><label class="f" for="tLiq">Liquidación de ventas (cláusula quinta)</label>
+        <select class="inp" id="tLiq">${Object.keys(LIQ_OPTS).map(k => `<option value="${k}" ${S.t.liq === k ? 'selected' : ''}>${k[0].toUpperCase() + k.slice(1)}</option>`).join('')}</select></div>
+      <div><label class="f" for="tVig">Vigencia en días (cláusula novena)</label>
+        <input class="inp" id="tVig" type="number" min="15" max="730" step="1" value="${S.t.vig}"></div>
+    </div>
+    <label class="f" for="tCity">Ciudad de firma (Nuevo León)</label>
+    <input class="inp" id="tCity" value="${esc(S.t.city)}" maxlength="40">` : ''}
+    <label class="f" for="sName">Nombre completo</label>
+    <input class="inp" id="sName" value="${esc(p.person)}" maxlength="80" autocomplete="name">
+    <label class="f">Dibuja tu firma</label>
+    <div class="pad-wrap"><canvas class="pad" id="pad"></canvas><div class="base"></div><div class="hint" id="hint">Firma aquí con tu dedo o mouse</div></div>
+    <div class="pad-tools"><span>${p.org}</span><span><button class="btn ghost sm" id="undo">Deshacer</button> <button class="btn ghost sm" id="clear">Borrar</button></span></div>
+    <label class="check"><input type="checkbox" id="agree"><span>Leí el contrato de consignación y el Anexo 1 (inventario de ${PIECES} prendas por ${money0(VALUE)}), acepto su contenido, incluida la comisión de 30% para la tienda, y acepto firmar de forma electrónica.</span></label>
+    <div class="actions"><button class="btn pink" id="signBtn" disabled>Firmar ambos documentos</button></div>`;
+  pad = makePad($('pad'));
+  const check = () => {
+    $('hint').style.display = pad.points() ? 'none' : '';
+    $('signBtn').disabled = !(pad.points() > 8 && $('agree').checked && $('sName').value.trim().length > 4);
+  };
+  pad.onChange = check; $('agree').onchange = check; $('sName').oninput = check;
+  $('undo').onclick = () => pad.undo(); $('clear').onclick = () => pad.clear();
+  if (first) {
+    const upd = async () => {
+      S.t = { liq: $('tLiq').value, vig: Math.max(15, Math.min(730, parseInt($('tVig').value, 10) || 90)), city: $('tCity').value.trim() || DEFAULT_TERMS.city };
+      DOC_HASH = await sha256(canonical(S.t)); renderContract();
+    };
+    $('tLiq').onchange = upd; $('tVig').onchange = upd; $('tCity').onchange = upd;
+  }
+  $('signBtn').onclick = () => sign(who);
+}
+
+async function sign(who) {
+  $('signBtn').disabled = true; $('signBtn').textContent = 'Firmando…';
+  DOC_HASH = await sha256(canonical(S.t));
+  S.s[who] = { n: $('sName').value.trim(), st: pad.encode(), at: new Date().toISOString(), d: device(), h: DOC_HASH };
+  const url = await linkFor(S);
+  history.replaceState(null, '', url);
+  notify(who, url);
+  await renderAll();
+  if (who === 'a') showSendToErick(url);
+  else document.getElementById('firmar').scrollIntoView({ behavior: 'smooth' });
+}
+
+function showSendToErick(url) {
+  const el = $('firmar');
+  el.innerHTML = `<h2>Firmaste. Ahora envíale el link a Erick</h2>
+    <p class="lead">Este link ya lleva tu firma. Cuando Erick lo abra va a ver los documentos firmados por ti y podrá firmar como EL CONSIGNATARIO.</p>
+    <div class="linkbox"><input class="inp" id="erickLink" readonly value="${esc(url)}"></div>
+    <div class="actions">
+      <a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(`Hola Erick, te comparto el contrato de consignación Kamero Designer × Pompa Street (70/30, 30% para la tienda) con el inventario de la colaboración. Ya lo firmé; revísalo y fírmalo aquí: ${url}`)}">Enviar a Erick por WhatsApp</a>
+      <button class="btn ghost" id="copyBtn">Copiar link</button>
+    </div>`;
+  $('copyBtn').onclick = () => copy(url);
+  el.scrollIntoView({ behavior: 'smooth' });
+}
+
+async function copy(text) {
+  try { await navigator.clipboard.writeText(text); toast('Link copiado'); }
+  catch { const i = document.createElement('textarea'); i.value = text; document.body.appendChild(i); i.select(); document.execCommand('copy'); i.remove(); toast('Link copiado'); }
+}
+
+function notify(who, url) {
+  const s = S.s[who], p = PARTIES[who];
+  fetch(NOTIFY, {
+    method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({
+      _subject: `Firma: ${s.n} (${p.org}) firmó el contrato Kamero × Pompa Street`,
+      _template: 'table', _captcha: 'false',
+      Firmante: s.n, Rol: p.role, Empresa: p.org, Fecha: fmtDT(s.at), Dispositivo: s.d,
+      Estado: who === 'a' ? 'Falta firma de Erick' : 'Contrato completo',
+      Huella: s.h, Link: url,
+    }),
+  }).catch(() => {});
+}
+
+function renderCert() {
+  const done = Object.keys(S.s).length;
+  $('certDoc').hidden = !done;
+  if (!done) return;
+  let h = `<h2>Certificado de firma electrónica</h2><p class="center muted">Contrato de consignación + Anexo 1 · Kamero Designer × Pompa Street</p><table>`;
+  h += `<tr><td>Huella del documento (SHA-256)</td><td class="mono">${DOC_HASH}</td></tr>`;
+  h += `<tr><td>Términos</td><td>Comisión ${COMMISSION}% tienda / ${100 - COMMISSION}% consignante · liquidación ${S.t.liq} · vigencia ${S.t.vig} días · ${esc(S.t.city)}, N.L.</td></tr>`;
+  h += `<tr><td>Inventario</td><td>${PIECES} prendas · ${money(VALUE)}</td></tr>`;
+  for (const k of ['a', 'b']) {
+    const s = S.s[k], p = PARTIES[k];
+    h += `<tr><td>${p.role}</td><td>${s ? `<b>${esc(s.n)}</b> · ${esc(p.org)}<br>Firmó: ${fmtDT(s.at)} (hora de Monterrey)<br>Dispositivo: ${esc(s.d)}<br>Huella firmada: <span class="mono">${s.h === DOC_HASH ? 'coincide ✓' : 'NO coincide'}</span>` : 'Pendiente'}</td></tr>`;
+  }
+  h += `</table>`;
+  $('cert').innerHTML = h;
+}
+
+async function renderAll() {
+  DOC_HASH = await sha256(canonical(S.t));
+  renderSteps(); renderContract(); renderInventory(); await renderBanner(); renderPanel(); renderCert();
+  document.title = (nextSigner() ? 'Firma pendiente' : 'Firmado') + ' · Kamero Designer × Pompa Street';
+}
+
+async function load() {
+  $('kPieces').textContent = PIECES; $('kValue').textContent = money0(VALUE);
+  const m = location.hash.match(/#d=([A-Za-z0-9_-]+)/);
+  if (m) {
+    try { const st = await unpack(m[1]); if (st && st.v === 1) S = { v: 1, t: { ...DEFAULT_TERMS, ...st.t }, s: st.s || {} }; }
+    catch { $('banner').innerHTML = '<div class="banner warn">El link está incompleto o dañado. Pide que te lo vuelvan a enviar.</div>'; }
+  }
+  await renderAll();
+}
+window.addEventListener('hashchange', () => location.reload());
+load();
+</script>
+</body>
+</html>

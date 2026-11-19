@@ -238,7 +238,7 @@ const VALUE = INVENTORY.reduce((a, it) => a + qty(it) * it.price, 0);
 const money = n => '$' + n.toLocaleString('es-MX', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const money0 = n => '$' + n.toLocaleString('es-MX');
 
-const DEFAULT_TERMS = { liq: 'mensual', vig: 90, city: 'Monterrey' };
+const DEFAULT_TERMS = { liq: 'mensual', city: 'Monterrey' };
 const LIQ_OPTS = { semanal: 'semana', quincenal: 'quince (15) días', mensual: 'mes, dentro de los primeros cinco días hábiles del mes siguiente' };
 const MONTHS = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 
@@ -293,7 +293,7 @@ function clauses(t) {
     ['SEXTA. Cuidado y responsabilidad de la mercancía.', 'EL CONSIGNATARIO se obliga a conservar las prendas en buen estado, evitando su deterioro, alteración o uso indebido. Asimismo, deberá responder conforme a la ley y a lo aquí pactado por la pérdida o daño de las prendas durante el periodo en que se encuentren bajo su posesión, considerando las excepciones legales aplicables.'],
     ['SÉPTIMA. Prohibición de descuentos.', 'EL CONSIGNATARIO no podrá modificar los precios establecidos, ofrecer descuentos, promociones o entregar mercancía a terceros fuera de las condiciones autorizadas por EL CONSIGNANTE, sin autorización previa.'],
     ['OCTAVA. Devolución de mercancía.', 'Las prendas que no hayan sido vendidas deberán ser devueltas a EL CONSIGNANTE al terminar el plazo establecido, en las mismas condiciones en que fueron recibidas, salvo el desgaste ordinario derivado de la exhibición autorizada.'],
-    ['NOVENA. Vigencia.', `El presente contrato tendrá una vigencia de {{${t.vig} días}}, contados a partir de su firma, pudiendo renovarse previo acuerdo de ambas partes.`],
+    ['NOVENA. Vigencia.', 'El presente contrato tendrá una vigencia de {{un (1) año}} contado a partir de su firma, {{o hasta agotar existencias}} de las prendas entregadas en consignación, lo que ocurra primero, pudiendo renovarse previo acuerdo de ambas partes.'],
     ['DÉCIMA. Terminación anticipada.', 'Cualquiera de las partes podrá solicitar la terminación anticipada del contrato mediante aviso por escrito a la otra parte, debiendo realizarse la liquidación de las ventas pendientes y la devolución de las prendas no vendidas.'],
     ['DÉCIMA PRIMERA. Jurisdicción.', 'Para la interpretación y cumplimiento del presente contrato, las partes se someten a las disposiciones aplicables del Código de Comercio y a los tribunales competentes que correspondan conforme a derecho.'],
     ['DÉCIMA SEGUNDA. Firma electrónica.', 'Las partes acuerdan celebrar el presente contrato y su Anexo 1 por medios electrónicos, reconociendo su firma electrónica como manifestación expresa de su voluntad, con la misma validez que su firma autógrafa, en términos de los artículos 89 y siguientes del Código de Comercio. Cada parte conserva una copia digital idéntica del documento firmado.'],
@@ -481,11 +481,9 @@ function renderPanel() {
     ${first ? `<div class="row2">
       <div><label class="f" for="tLiq">Liquidación de ventas (cláusula quinta)</label>
         <select class="inp" id="tLiq">${Object.keys(LIQ_OPTS).map(k => `<option value="${k}" ${S.t.liq === k ? 'selected' : ''}>${k[0].toUpperCase() + k.slice(1)}</option>`).join('')}</select></div>
-      <div><label class="f" for="tVig">Vigencia en días (cláusula novena)</label>
-        <input class="inp" id="tVig" type="number" min="15" max="730" step="1" value="${S.t.vig}"></div>
-    </div>
-    <label class="f" for="tCity">Ciudad de firma (Nuevo León)</label>
-    <input class="inp" id="tCity" value="${esc(S.t.city)}" maxlength="40">` : ''}
+      <div><label class="f" for="tCity">Ciudad de firma (Nuevo León)</label>
+        <input class="inp" id="tCity" value="${esc(S.t.city)}" maxlength="40"></div>
+    </div>` : ''}
     <label class="f" for="sName">Nombre completo</label>
     <input class="inp" id="sName" value="${esc(p.person)}" maxlength="80" autocomplete="name">
     <label class="f">Dibuja tu firma</label>
@@ -502,10 +500,10 @@ function renderPanel() {
   $('undo').onclick = () => pad.undo(); $('clear').onclick = () => pad.clear();
   if (first) {
     const upd = async () => {
-      S.t = { liq: $('tLiq').value, vig: Math.max(15, Math.min(730, parseInt($('tVig').value, 10) || 90)), city: $('tCity').value.trim() || DEFAULT_TERMS.city };
+      S.t = { liq: $('tLiq').value, city: $('tCity').value.trim() || DEFAULT_TERMS.city };
       DOC_HASH = await sha256(canonical(S.t)); renderContract();
     };
-    $('tLiq').onchange = upd; $('tVig').onchange = upd; $('tCity').onchange = upd;
+    $('tLiq').onchange = upd; $('tCity').onchange = upd;
   }
   $('signBtn').onclick = () => sign(who);
 }
@@ -560,7 +558,7 @@ function renderCert() {
   if (!done) return;
   let h = `<h2>Certificado de firma electrónica</h2><p class="center muted">Contrato de consignación + Anexo 1 · Kamero Designer × Pompa Street</p><table>`;
   h += `<tr><td>Huella del documento (SHA-256)</td><td class="mono">${DOC_HASH}</td></tr>`;
-  h += `<tr><td>Términos</td><td>Comisión ${COMMISSION}% tienda / ${100 - COMMISSION}% consignante · liquidación ${S.t.liq} · vigencia ${S.t.vig} días · ${esc(S.t.city)}, N.L.</td></tr>`;
+  h += `<tr><td>Términos</td><td>Comisión ${COMMISSION}% tienda / ${100 - COMMISSION}% consignante · liquidación ${S.t.liq} · vigencia 1 año o hasta agotar existencias · ${esc(S.t.city)}, N.L.</td></tr>`;
   h += `<tr><td>Inventario</td><td>${PIECES} prendas · ${money(VALUE)}</td></tr>`;
   for (const k of ['a', 'b']) {
     const s = S.s[k], p = PARTIES[k];

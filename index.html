@@ -215,7 +215,7 @@ footer{color:var(--muted);font-size:12px;text-align:center;padding:30px 0 50px}
 
   <!-- DOCUMENTO 2 -->
   <article class="doc" id="doc2">
-    <div class="doc-h"><span class="n">2</span><div><b>Anexo 1 · Inventario de mercancía (Colaboración Kamero Designer × Pompa Street)</b><small>Parte integral del contrato, cláusula tercera</small></div></div>
+    <div class="doc-h"><span class="n">2</span><div><b>Anexo 1 · Inventario de mercancía (Colaboración 2026 Kamero Designer × Pompa Street)</b><small>Parte integral del contrato, cláusula tercera</small></div></div>
     <div class="doc-b" id="inventory"></div>
   </article>
   <div class="noprint center"><a class="btn pink" href="#firmar">↑ Regresar a firmar</a></div>
@@ -244,17 +244,17 @@ const COMMISSION = 30; // % para la tienda
 const NOTIFY = 'https://formsubmit.co/ajax/315af0f28bc392cb40c46c5748ab2866';
 
 const INVENTORY = [
-  { name: 'Conjunto Pana', price: 4098, sizes: { XS: 2, S: 5, M: 1, L: 4, XL: 2 }, img: ['pana-1.jpg', 'pana-2.jpg'] },
+  { name: 'Conjunto Pana', price: 4098, sizes: { XS: 1, S: 1, M: 1, L: 1, XL: 1 }, img: ['pana-1.jpg', 'pana-2.jpg'] },
   { name: 'Conjunto Serpiente Fuego', price: 3198, sizes: { L: 2 }, img: ['serpiente-1.jpg', 'serpiente-2.jpg'] },
   { name: 'Conjunto Suede Verde', price: 4098, sizes: { XL: 1 }, img: ['suede-verde.jpg'] },
   { name: 'Conjunto Suede Azul', price: 4098, sizes: { M: 1 }, img: ['suede-azul.jpg'] },
-  { name: 'Conjunto Suede Rosa', price: 4098, sizes: { S: 2, M: 3, L: 3, XL: 2 }, img: ['suede-rosa.jpg'] },
+  { name: 'Conjunto Suede Rosa', price: 4098, sizes: { S: 1, M: 2, L: 1, XL: 1 }, img: ['suede-rosa.jpg'] },
   { name: 'Conjunto Flores (Anacahuita)', price: 3498, sizes: { M: 1, XL: 1, '2XL': 1 }, img: ['flores.jpg'] },
   { name: 'Conjunto Verde (Ornamenta Jade)', price: 3498, sizes: { '2XL': 2 }, img: ['jade.jpg'] },
   { name: 'Conjunto Negro (Sad Noir)', price: 3498, sizes: { '2XL': 1 }, img: ['noir-1.jpg', 'noir-2.jpg'] },
   { name: 'Conjunto Flamas', price: 3498, sizes: { M: 2, XL: 1, '2XL': 2 }, img: ['flamas-1.jpg', 'flamas-2.jpg'] },
   { name: 'Work Pants Jacquard', price: 1699, sizes: { 'XS (28)': 2, 'M (32)': 1, 'L (34)': 1 }, img: ['workpants.jpg'] },
-  { name: 'Playera #1', price: 1499, sizes: { XS: 2, L: 2, XL: 2, '2XL': 2, '3XL': 1 }, img: ['playera.png'] },
+  { name: 'Playera #1', price: 1499, sizes: { XS: 1, L: 2, XL: 1, '2XL': 1 }, img: ['playera.png'] },
 ];
 const qty = it => Object.values(it.sizes).reduce((a, b) => a + b, 0);
 const PIECES = INVENTORY.reduce((a, it) => a + qty(it), 0);
@@ -368,7 +368,7 @@ function renderContract() {
 }
 
 function renderInventory() {
-  let h = `<h2>Anexo 1. Inventario de mercancía</h2><p class="center muted">Colaboración Kamero Designer × Pompa Street · precios al público</p><div class="inv">`;
+  let h = `<h2>Anexo 1. Inventario de mercancía</h2><p class="center muted">Colaboración 2026 Kamero Designer × Pompa Street · precios al público</p><div class="inv">`;
   for (const it of INVENTORY) {
     h += `<div class="item"><div class="ph">${it.img.map(src => `<img src="img/${src}" alt="${esc(it.name)}" loading="lazy">`).join('')}</div>
       <div><h4>${esc(it.name)}</h4><div class="pr">${money(it.price)}</div>
